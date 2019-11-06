@@ -12,8 +12,10 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import django_heroku
-import dj_database_url
+# import dj_database_url
 import dotenv
+
+dj_database_url = "postgres://ozeqvtnjawqqnq:9b8b620f2ca46afeeffa71fac4b1e81887053961f81ad7564acce2ac4d5b45d5@ec2-23-21-106-241.compute-1.amazonaws.com:5432/de7qlnlbij86dl"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
