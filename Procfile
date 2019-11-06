@@ -1,1 +1,1 @@
-web: gunicorn ntdb.wsgi --log-file -
+web: gunicorn rn.wsgi --log-file -
