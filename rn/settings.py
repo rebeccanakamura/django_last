@@ -140,7 +140,7 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = [
 #     os.path.join(BASE_DIR, 'rn/static'),
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-]
+# ]
 
 # Media Folder Settings
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
