@@ -11,11 +11,16 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-
 import django_heroku
+import dj_database_url
+import dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+dotenv_file = os.path.join(BASE_DIR, '.env')
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
 
 # Quick-start development settings - unsuitable for production
@@ -47,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -82,14 +88,16 @@ WSGI_APPLICATION = 'rn.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'needfulthingsdb',
-        'USER': 'postgres',
+        'ENGINE': 'postgres://ozeqvtnjawqqnq:9b8b620f2ca46afeeffa71fac4b1e81887053961f81ad7564acce2ac4d5b45d5@ec2-23-21-106-241.compute-1.amazonaws.com:5432/de7qlnlbij86dl',
+        'NAME': 'de7qlnlbij86dl',
+        'USER': 'ozeqvtnjawqqnq',
         'PASSWORD': '',
-        'HOST': 'localhost'
+        'HOST': 'ec2-23-21-106-241.compute-1.amazonaws.com'
     }
 }
 
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -129,8 +137,9 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'rn/static'),
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'rn/static'),
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 ]
 
 # Media Folder Settings
@@ -153,3 +162,6 @@ except ImportError:
 
 # Activate Django-Heroku
 django_heroku.settings(locals())
+
+# This is new
+del DATABASES['default']['OPTIONS']['sslmode']
