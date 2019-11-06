@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %} | Welcome {% endblock %}
+
+{% block content %}
+<!-- Showcase -->
+<section id="showcase">
+    <div class="container text-center">
+      <div class="home-search p-5">
+        <div class="overlay p-5">
+          <h1 class="display-4 mb-4">
+            Shop Your Way!
+          </h1>
+          <p class="lead">Many new items are added daily so check back early and often!</p>
+          <div class="search">
+              <form action="{% url 'search' %}">
+                  <!-- Form Row 1 -->
+                  <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                      <label class="sr-only">Keywords</label>
+                      <input type="text" name="keywords" class="form-control" placeholder="Keyword Search">
+                    </div>
+                <!-- <div class="col-md-4 mb-3">
+                    <label class="sr-only">Categories</label>
+                    <select name="category" class="form-control">
+                      <option selected="true" disabled="disabled">Please Select Category</option>
+                      {% for key,value in category.items %}
+                      <option value="{{ key }}">{{ value }}</option>
+                      {% endfor %}
+                    </select>
+                </div> -->
+              </div>
+              <button class="btn btn-secondary btn-block mt-4" type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<br>
+
+
+  <!-- Items -->
+  <section id="items" class="py-10">
+    <div class="container">
+      <h3 class="text-center mb-3">Just Added Items</h3>
+      <div class="row">
+        {% if items %}
+          {% for item in items %}
+            <!-- Item 1 -->
+            <div class="col-md-14 col-lg-4 mb-4">
+              <div class="card item-preview">
+                <img class="card-img-top" src="{{ item.photo_main.url }}" alt="">
+                <div class="card-body">
+                    <div class="item-heading text-center">
+                      <h4 class="text-primary">{{ item.title }}</h4>
+  
+                    </div>
+  
+                    <hr>
+                    <div class="row py-2 text-secondary">
+                      <div class="col-12">
+                        <i class="fas fa-user"></i> Seller: {{ item.seller }}</div>
+                    </div>
+                    <div class="row text-secondary pb-2">
+                      <div class="col-12">
+                        <i class="fas fa-clock"></i>&nbsp; Item Listed: {{ item.date_listed | timesince }} ago</div>
+                    </div>
+  
+                    <div class="row text-secondary pb-2">
+                      <div class="col-12">Description:
+                        {{ item.description }}</div>
+                    </div>
+                    <hr>
+                    <a href="{% url 'item' item.id %}" class="btn btn-primary btn-block">More Info</a>
+                  </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-md-12">
+            <p>No Listings Available</p>
+          </div>
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+
+  
+{% endblock %}
