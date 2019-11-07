@@ -1,4 +1,4 @@
 import datetime
 
-def dateNow(request):
-    return {'dateNow':datetime.datetime.now()}
+def date_now(request):
+    return {'date_now':datetime.datetime.now()}
