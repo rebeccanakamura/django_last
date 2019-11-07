@@ -7,7 +7,7 @@ from .models import Item
 from datetime import datetime
 
 def index(request):
-  items = Item.objects.order_by('-date_listed').filter(is_published=True)
+  items = Item.objects.order_by('-dateListed').filter(isPublished=True)
 
   paginator = Paginator(items, 6)
   page = request.GET.get('page')
@@ -28,7 +28,7 @@ def item(request, item_id):
   return render(request, 'items/item.html', context)
 
 def search(request):
-  queryset_list = Item.objects.order_by('-date_listed')
+  queryset_list = Item.objects.order_by('-dateListed')
 
   # Keywords
   if 'keywords' in request.GET:
@@ -42,7 +42,7 @@ def search(request):
   #     queryset_list = queryset_list.filter(category__iexact=category)
 
   context = {
-    'category': Item.item_category,
+    'category': Item.itemCategory,
     'items': queryset_list,
     'values': request.GET
   }

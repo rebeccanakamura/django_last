@@ -4,7 +4,7 @@ from datetime import datetime
 from sellers.models import Seller
 from .choices import category, badge
 
-category_list = [
+categoryList = [
     ('select a category', 'SELECT A CATEGORY'),
     ('antiques', 'ANTIQUES'),
     ('books', 'BOOKS'),
@@ -46,12 +46,12 @@ class Item(models.Model):
     seller = models.ForeignKey(Seller, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=70)
-    item_badge = models.CharField(max_length=20, choices=badge)
-    item_category = models.CharField(max_length=50, choices=category_list)
-    photo_main = models.ImageField(upload_to='media/%Y%/m%/%d', blank=False)
-    photo_front = models.ImageField(upload_to='media/%Y%/m%/%d', blank=True)
-    photo_back = models.ImageField(upload_to='media/%Y%/m%/%d', blank=True)
-    is_published = models.BooleanField(default=True)
-    date_listed = models.DateTimeField(default=datetime.now)
+    itemBadge = models.CharField(max_length=20, choices=badge)
+    itemCategory = models.CharField(max_length=50, choices=categoryList)
+    photoMain = models.ImageField(upload_to='media/%Y%/m%/%d', blank=False)
+    photoFront = models.ImageField(upload_to='media/%Y%/m%/%d', blank=True)
+    photoBack = models.ImageField(upload_to='media/%Y%/m%/%d', blank=True)
+    isPublished = models.BooleanField(default=True)
+    dateListed = models.DateTimeField(default=datetime.now)
     def __str__(self):
         return self.title
