@@ -6,18 +6,18 @@ from items.models import Item
 from sellers.models import Seller
 
 def index(request):
-    items = Item.objects.order_by('-date_listed').filter(is_published=True)[:6]
+    items = Item.objects.order_by('-dateListed').filter(isPublished=True)[:6]
 
     context = {
         'items': items,
-        'category': category,
+        'category': Item.itemCategory,
     }
 
     return render(request, 'pages/index.html', context)
 
 
 def about(request):
-    sellers = Seller.objects.order_by('-date_joined')
+    sellers = Seller.objects.order_by('-dateJoined')
 
     context = {
         'sellers': sellers

@@ -4,7 +4,7 @@ from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from .models import Seller
 
 def index(request):
-  sellers = Seller.objects.order_by('-seller_date').filter(is_published=True)
+  sellers = Seller.objects.order_by('-sellerDate').filter(isPublished=True)
 
   paginator = Paginator(items, 6)
   page = request.GET.get('page')
@@ -17,7 +17,7 @@ def index(request):
   return render(request, 'sellers/sellers.html', context)
 
 def seller(request, item_id):
-  seller = get_object_or_404(Seller, pk=seller_id)
+  seller = get_object_or_404(Seller, pk=sellerId)
 
   context = {
     'seller': seller
@@ -26,7 +26,7 @@ def seller(request, item_id):
   return render(request, 'sellers/seller.html', context)
 
 def search(request):
-  queryset_list = Seller.objects.order_by('-seller_date')
+  queryset_list = Seller.objects.order_by('-sellerDate')
 
   # Keywords
   if 'keywords' in request.GET:
@@ -35,13 +35,13 @@ def search(request):
       queryset_list = queryset_list.filter(description__icontains=keywords)
 
   # Categories
-  if 'categories' in request.GET:
-    category = request.GET['category']
-    if category:
-      queryset_list = queryset_list.filter(category__iexact=category)
+  # if 'categories' in request.GET:
+  #   category = request.GET['category']
+  #   if category:
+  #     queryset_list = queryset_list.filter(category__iexact=category)
 
-  context = {
-    'sellers': queryset_list,
+  # context = {
+  #   'sellers': queryset_list,
   }
 
   return render(request, 'sellers/search.html', context)
