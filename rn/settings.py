@@ -11,16 +11,16 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
-import django_heroku
-import dj_database_url
-import dotenv
+# import django_heroku
+# import dj_database_url
+# import dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-dotenv_file = os.path.join(BASE_DIR, '.env')
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+# dotenv_file = os.path.join(BASE_DIR, '.env')
+# if os.path.isfile(dotenv_file):
+#     dotenv.load_dotenv(dotenv_file)
 
 
 # Quick-start development settings - unsuitable for production
@@ -86,18 +86,18 @@ WSGI_APPLICATION = 'rn.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'postgres://ozeqvtnjawqqnq:9b8b620f2ca46afeeffa71fac4b1e81887053961f81ad7564acce2ac4d5b45d5@ec2-23-21-106-241.compute-1.amazonaws.com:5432/de7qlnlbij86dl',
-#         'NAME': 'de7qlnlbij86dl',
-#         'USER': 'ozeqvtnjawqqnq',
-#         'PASSWORD': '',
-#         'HOST': 'ec2-23-21-106-241.compute-1.amazonaws.com'
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'postgres://ozeqvtnjawqqnq:9b8b620f2ca46afeeffa71fac4b1e81887053961f81ad7564acce2ac4d5b45d5@ec2-23-21-106-241.compute-1.amazonaws.com:5432/de7qlnlbij86dl',
+        'NAME': 'de7qlnlbij86dl',
+        'USER': 'ozeqvtnjawqqnq',
+        'PASSWORD': '',
+        'HOST': 'ec2-23-21-106-241.compute-1.amazonaws.com'
+    }
+}
 
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(conn_max_age=600)
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -140,7 +140,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'rn/static'),
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media Folder Settings
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
@@ -164,4 +164,7 @@ except ImportError:
 django_heroku.settings(locals())
 
 # This is new
-del DATABASES['default']['OPTIONS']['sslmode']
+# del DATABASES['default']['OPTIONS']['sslmode']
+
+import dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
