@@ -25,23 +25,23 @@ def seller(request, item_id):
 
   return render(request, 'sellers/seller.html', context)
 
-# def search(request):
-#   queryset_list = Seller.objects.order_by('-seller_date')
+def search(request):
+  queryset_list = Seller.objects.order_by('-seller_date')
 
-#   # Keywords
-#   if 'keywords' in request.GET:
-#     keywords = request.GET['keywords']
-#     if keywords:
-#       queryset_list = queryset_list.filter(description__icontains=keywords)
+  # Keywords
+  if 'keywords' in request.GET:
+    keywords = request.GET['keywords']
+    if keywords:
+      queryset_list = queryset_list.filter(description__icontains=keywords)
 
-#   # Categories
-#   if 'categories' in request.GET:
-#     category = request.GET['category']
-#     if category:
-#       queryset_list = queryset_list.filter(category__iexact=category)
+  # Categories
+  if 'categories' in request.GET:
+    category = request.GET['category']
+    if category:
+      queryset_list = queryset_list.filter(category__iexact=category)
 
-#   context = {
-#     'sellers': queryset_list,
-#   }
+  context = {
+    'sellers': queryset_list,
+  }
 
-#   return render(request, 'sellers/search.html', context)
+  return render(request, 'sellers/search.html', context)

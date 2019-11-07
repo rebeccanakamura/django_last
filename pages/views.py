@@ -10,7 +10,7 @@ def index(request):
 
     context = {
         'items': items,
-        'category': Item.item.category,
+        'category': category,
     }
 
     return render(request, 'pages/index.html', context)

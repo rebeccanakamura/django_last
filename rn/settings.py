@@ -88,11 +88,11 @@ WSGI_APPLICATION = 'rn.wsgi.application'
 
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'postgres://ozeqvtnjawqqnq:9b8b620f2ca46afeeffa71fac4b1e81887053961f81ad7564acce2ac4d5b45d5@ec2-23-21-106-241.compute-1.amazonaws.com:5432/de7qlnlbij86dl',
-#         'NAME': 'de7qlnlbij86dl',
-#         'USER': 'ozeqvtnjawqqnq',
+#         'ENGINE': 'postgres://kqkawxfykywvyu:6b27088f790ccd4d77d9efe0928399d2a5079d5f4cf57959a5cd78c55f71875e@ec2-174-129-252-240.compute-1.amazonaws.com:5432/d9hf753g65im2r',
+#         'NAME': 'd9hf753g65im2r',
+#         'USER': 'kqkawxfykywvyu',
 #         'PASSWORD': '',
-#         'HOST': 'ec2-23-21-106-241.compute-1.amazonaws.com'
+#         'HOST': 'ec2-174-129-252-240.compute-1.amazonaws.com'
 #     }
 # }
 
