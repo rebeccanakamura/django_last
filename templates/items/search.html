@@ -40,9 +40,9 @@
               <i class="fas fa-home"></i> Home</a>
           </li>
           <li class="breadcrumb-Item">
-            <a href="{% url 'Items' %}">Browse Listings</a>
+            <a href="{% url 'items' %}">Browse Listings</a>
           </li>
-          <li class="breadcrumb-Item active"> Search Results</li>
+          <li class="breadcrumb-item active"> Search Results</li>
         </ol>
       </nav>
     </div>
@@ -55,7 +55,7 @@
         {% if Items %}
             {% for Item in Items %}
             <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card Item-preview">
+                <div class="card item-preview">
                   <img class="card-img-top" src="{{ Item.photo_main.url }}" alt="">
                   <div class="card-img-overlay">
                     <h2>
@@ -81,7 +81,7 @@
                         <i class="fas fa-clock"></i> {{ Item.date_listed | timesince }}</div>
                     </div>
                     <hr>
-                    <a href="{% url 'Item' Item.id %}" class="btn btn-primary btn-block">More Info</a>
+                    <a href="{% url 'item' Item.id %}" class="btn btn-primary btn-block">More Info</a>
                   </div>
                 </div>
               </div>
