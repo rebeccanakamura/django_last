@@ -47,7 +47,7 @@ class Item(models.Model):
     title = models.CharField(max_length=20)
     description = models.CharField(max_length=70)
     item_badge = models.CharField(max_length=20, choices=badge)
-    category_list = models.CharField(max_length=50, choices=category_list)
+    item_category = models.CharField(max_length=50, choices=category_list)
     photo_main = models.ImageField(upload_to='media/%Y%/m%/%d', blank=False)
     photo_front = models.ImageField(upload_to='media/%Y%/m%/%d', blank=True)
     photo_back = models.ImageField(upload_to='media/%Y%/m%/%d', blank=True)

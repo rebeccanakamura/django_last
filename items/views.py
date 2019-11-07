@@ -42,7 +42,7 @@ def search(request):
   #     queryset_list = queryset_list.filter(category__iexact=category)
 
   context = {
-    'category': Item.category_list,
+    'category': Item.item_category,
     'items': queryset_list,
     'values': request.GET
   }
