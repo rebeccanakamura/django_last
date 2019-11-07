@@ -17,7 +17,7 @@
           <li class="breadcrumb-item">
             <a href="{% url 'items' %}">Items</a>
           </li>
-          <li class="breadcrumb-item active">{{ item.title }}</li>
+          <li class="breadcrumb-item active">{{ Item.title }}</li>
         </ol>
       </nav>
     </div>
@@ -30,27 +30,27 @@
       <!-- <div class="row"> -->
         <div class="col-md-12">
           <!-- Home Main Image -->
-          <img src="{{ item.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
+          <img src="{{ Item.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
           <!-- Thumbnails -->
           <!-- <div class="row mb-5 thumbs"> -->
-            {% if item.photo_front %}
+            {% if Item.photo_front %}
             <div class="col-md-12">
-              <a href="{{ item.photo_front.url }}" data-lightbox="home-images">
-                <img src="{{ item.photo_front.url }}" alt="" class="img-fluid">
+              <a href="{{ Item.photo_front.url }}" data-lightbox="home-images">
+                <img src="{{ Item.photo_front.url }}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
-            {% if item.photo_back %}
+            {% if Item.photo_back %}
             <div class="col-md-12">
-              <a href="{{ item.photo_back.url }}" data-lightbox="home-images">
-                <img src="{{ item.photo_back.url }}" alt="" class="img-fluid">
+              <a href="{{ Item.photo_back.url }}" data-lightbox="home-images">
+                <img src="{{ Item.photo_back.url }}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}       
           <!-- </div> -->
         </div>
         <div class="col-md-12">
-            <img class="card-img-top" src="{{ item.seller.photo.url }}" alt="">
+            <img class="card-img-top" src="{{ Item.seller.photo.url }}" alt="">
           </div>
         <!-- </div> -->
       </div>
@@ -71,19 +71,19 @@
               <ul class="list-group list-group-flush">
                 <li class="list-group-item text-secondary">
                   Title:
-                  <span class="float-right">{{ item.title }}</span>
+                  <span class="float-right">{{ Item.title }}</span>
                 </li>
                 <li class="list-group-item text-secondary">
                   Description:
-                  <span class="float-right">{{ item.description }}</span>
+                  <span class="float-right">{{ Item.description }}</span>
                 </li>
                 <li class="list-group-item text-secondary">
                   Listed Category:
-                  <span class="float-right">{{ item.category_list }}</span>
+                  <span class="float-right">{{ Item.category_list }}</span>
                 </li>
                 <li class="list-group-item text-secondary">
                   Date/Time Listed:
-                  <span class="float-right">{{ item.date_listed }}
+                  <span class="float-right">{{ Item.date_listed }}
                   </span>
                 </li>
               </ul>
