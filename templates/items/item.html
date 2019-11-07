@@ -17,33 +17,33 @@
           <li class="breadcrumb-item">
             <a href="{% url 'items' %}">Items</a>
           </li>
-          <li class="breadcrumb-item active">{{ Item.title }}</li>
+          <li class="breadcrumb-item active">{{ item.title }}</li>
         </ol>
       </nav>
     </div>
   </section>
 
    <!-- Listing -->
-  <section id="Item" class="py-12">
+  <section id="item" class="py-12">
     <div class="container">
       <a href="{% url 'items' %}" class="btn btn-light mb-2">Back To Items</a>
       <!-- <div class="row"> -->
         <div class="col-md-12">
           <!-- Home Main Image -->
-          <img src="{{ Item.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
+          <img src="{{ item.photo_main.url }}" alt="" class="img-main img-fluid mb-3">
           <!-- Thumbnails -->
           <!-- <div class="row mb-5 thumbs"> -->
-            {% if Item.photo_front %}
+            {% if item.photo_front %}
             <div class="col-md-12">
-              <a href="{{ Item.photo_front.url }}" data-lightbox="home-images">
-                <img src="{{ Item.photo_front.url }}" alt="" class="img-fluid">
+              <a href="{{ item.photo_front.url }}" data-lightbox="home-images">
+                <img src="{{ item.photo_front.url }}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}
-            {% if Item.photo_back %}
+            {% if item.photo_back %}
             <div class="col-md-12">
-              <a href="{{ Item.photo_back.url }}" data-lightbox="home-images">
-                <img src="{{ Item.photo_back.url }}" alt="" class="img-fluid">
+              <a href="{{ item.photo_back.url }}" data-lightbox="home-images">
+                <img src="{{ item.photo_back.url }}" alt="" class="img-fluid">
               </a>
             </div>
             {% endif %}       

@@ -18,7 +18,7 @@
                       <label class="sr-only">Categories</label>
                       <select name="category" class="form-control">
                         <option selected="true" disabled="disabled">Please Select Category</option>
-                        {% for key,value in category.Items %}
+                        {% for key,value in category.items %}
                         <option value="{{ key }}">{{ value }}</option>
                         {% endfor %}
                       </select>
@@ -35,11 +35,11 @@
     <div class="container">
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-          <li class="breadcrumb-Item">
+          <li class="breadcrumb-item">
             <a href="{% url 'index' %}">
               <i class="fas fa-home"></i> Home</a>
           </li>
-          <li class="breadcrumb-Item">
+          <li class="breadcrumb-item">
             <a href="{% url 'items' %}">Browse Listings</a>
           </li>
           <li class="breadcrumb-item active"> Search Results</li>
@@ -48,40 +48,40 @@
     </div>
   </section>
 
-            <!-- Item 1 -->
-<section id="Items" class="py-4">
+            <!-- item 1 -->
+<section id="items" class="py-4">
     <div class="container">
         <div class="row">
-        {% if Items %}
-            {% for Item in Items %}
+        {% if items %}
+            {% for item in items %}
             <div class="col-md-6 col-lg-4 mb-4">
                 <div class="card item-preview">
-                  <img class="card-img-top" src="{{ Item.photo_main.url }}" alt="">
+                  <img class="card-img-top" src="{{ item.photo_main.url }}" alt="">
                   <div class="card-img-overlay">
                     <h2>
-                      <span class="badge badge-secondary text-white">{{ Item.badge }}</span>
+                      <span class="badge badge-secondary text-white">{{ item.badge }}</span>
                     </h2>
                   </div>
                   <div class="card-body">
                     <div class="listing-heading text-center">
-                      <h4 class="text-primary">{{ Item.title }}</h4>
+                      <h4 class="text-primary">{{ item.title }}</h4>
                     </div>
                     <hr>
                     <div class="row py-2 text-secondary">
                       <div class="col-12">
-                        Description: {{ Item.description }}</div>
+                        Description: {{ item.description }}</div>
                     </div>
                     <hr>
                     <div class="row py-2 text-secondary">
                       <div class="col-12">
-                        <i class="fas fa-user"></i> {{ Item.seller }}</div>
+                        <i class="fas fa-user"></i> {{ item.seller }}</div>
                     </div>
                     <div class="row text-secondary pb-2">
                       <div class="col-12">
-                        <i class="fas fa-clock"></i> {{ Item.date_listed | timesince }}</div>
+                        <i class="fas fa-clock"></i> {{ item.date_listed | timesince }}</div>
                     </div>
                     <hr>
-                    <a href="{% url 'item' Item.id %}" class="btn btn-primary btn-block">More Info</a>
+                    <a href="{% url 'item' item.id %}" class="btn btn-primary btn-block">More Info</a>
                   </div>
                 </div>
               </div>
