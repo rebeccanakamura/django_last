@@ -12,10 +12,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 import django_heroku
-# import dj_database_url
+import dj_database_url
 import dotenv
-
-dj_database_url = "postgres://ozeqvtnjawqqnq:9b8b620f2ca46afeeffa71fac4b1e81887053961f81ad7564acce2ac4d5b45d5@ec2-23-21-106-241.compute-1.amazonaws.com:5432/de7qlnlbij86dl"
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -32,7 +30,7 @@ if os.path.isfile(dotenv_file):
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['.herokuapp.com']
 
@@ -99,8 +97,7 @@ WSGI_APPLICATION = 'rn.wsgi.application'
 # }
 
 DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(conn_max_age=600)
-DATABASES['default'] = dj_database_url
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
