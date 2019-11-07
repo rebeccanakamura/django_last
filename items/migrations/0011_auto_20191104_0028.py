@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.RenameField(
             model_name='item',
             old_name='category_list',
-            new_name='category',
+            new_name='category_list',
         ),
     ]
